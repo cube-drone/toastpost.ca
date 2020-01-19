@@ -1,0 +1,35 @@
+const run = require('./jake/run.jake').run;
+const docker = require('./jake/docker.jake');
+const redis = require('./jake/redis.jake');
+const api = require('./jake/api.jake');
+const cockroach = require('./jake/cockroach.jake');
+const postgres = require('./jake/postgres.jake');
+
+/*
+ * List all tools & options.
+ */
+const help = () => {
+    return run('jake -f Jakefile -T');
+}
+
+// boot everything up
+const start = async () => {
+    await api.start();
+};
+
+// shut everything down
+const clean = async () => {
+    await redis.clean();
+};
+
+// run the tests
+const test = async () => {
+    await api.test();
+};
+
+desc("List all tools & options.");
+task('default', help);
+task('help', help);
+task('start', start);
+task('clean', clean);
+task('test', test);

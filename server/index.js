@@ -9,7 +9,7 @@ const responseTime = require('response-time');                  // Response-time
 const uuid = require('uuid/v4');
 
 // Models
-const UserModel = require('./models/UserModel');
+//const UserModel = require('./models/UserModel');
 
 // Routes
 const tuneRoute = require('./routes/user');
@@ -20,9 +20,6 @@ const pipeline = require('./pipeline');
 const createRedis = require('./services/redis');
 const createDatabase = require('./services/database');
 const StaticSetup = require('./services/static');
-
-// Music
-const Heart = require('./music/heart');
 
 // Templates
 const indexTemplate = require('./templates/index.html.js');
@@ -100,8 +97,8 @@ const main = async () => {
         ...environment,
     };
         
-    let userModel = await UserModel(services);
-    services.UserModel = userModel;
+    //let userModel = await UserModel(services);
+    //services.UserModel = userModel;
 
     if(nodeType === 'api'){
 
@@ -114,7 +111,7 @@ const main = async () => {
         const serveApp = (req, res) => {
             let html = indexTemplate({title, description, javascriptAssets: ['/client/index.js']});
             res.send(html);
-        }
+        };
 
         app.get('/', serveApp);
         app.get('/loading', serveApp);

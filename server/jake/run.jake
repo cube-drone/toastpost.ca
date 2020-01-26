@@ -7,7 +7,6 @@
  *
  */
 
-
 /*
  * This run function runs shellcmd, returning a Promise
  * that contains

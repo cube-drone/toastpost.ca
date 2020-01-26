@@ -2,7 +2,6 @@ const run = require('./jake/run.jake').run;
 const docker = require('./jake/docker.jake');
 const redis = require('./jake/redis.jake');
 const api = require('./jake/api.jake');
-const cockroach = require('./jake/cockroach.jake');
 const postgres = require('./jake/postgres.jake');
 
 /*

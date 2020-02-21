@@ -1,7 +1,7 @@
 console.log("Toot toot!");
 
 const title = "toastpost.ca";
-const description = "toastpost is a service for sending letters for your friends";
+const description = "toastpost is a service for sending letters to your friends";
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -23,6 +23,7 @@ const StaticSetup = require('./services/static');
 
 // Templates
 const indexTemplate = require('./templates/index.html.js');
+const appTemplate = require('./templates/app.html.js');
 
 // Variables
 // SERVER VARS
@@ -109,14 +110,21 @@ const main = async () => {
         testRoute(services);
 
         const serveApp = (req, res) => {
-            let html = indexTemplate({title, description, javascriptAssets: ['/client/index.js']});
+            let html = appTemplate({title, description, javascriptAssets: ['/client/index.js']});
             res.send(html);
         };
 
-        app.get('/', serveApp);
+        app.get('/home', serveApp);
         app.get('/loading', serveApp);
         app.get('/login', serveApp);
         app.get('/prompt', serveApp);
+
+        const marketingHome = (req, res) => {
+            let html = indexTemplate({title, description});
+            res.send(html);
+        };
+
+        app.get('/', marketingHome);
 
         // Pipeline
         pipeline(services);

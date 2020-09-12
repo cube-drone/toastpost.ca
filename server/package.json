@@ -26,7 +26,7 @@
     "jake": "^10.3.1",
     "luxon": "^1.21.1",
     "murmurhash-native": "^3.4.1",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "pg": "^7.12.1",
     "pg-hstore": "^2.3.3",
     "react": "^16.9.0",
